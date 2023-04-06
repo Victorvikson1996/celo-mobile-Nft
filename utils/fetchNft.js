@@ -25,9 +25,9 @@ async function fetchCeloNft(account) {
   // account = "0x47561bb7eB538b7969b8152AF9B30aAC2FAB0c81";
   // account = "0xb395F443BA3Df615c7aF8A147c7d380dF6F9Db55";
 
-  // const apiUrl = `https://api.center.dev/experimental/alchemy/celo-mainnet/nft/v2/${apiKey}/getNFTs?owner=${account}&withMetadata=true`;
+  const apiUrl = `https://api.center.dev/experimental/alchemy/celo-mainnet/nft/v2/${apiKey}/getNFTs?owner=${account}&withMetadata=true`;
 
-  const apiUrl = `https://api.center.dev/experimental/alchemy/celo-mainnet/nft/v2/test/getNFTs?owner=${account}&withMetadata=true`;
+  // const apiUrl = `https://api.center.dev/experimental/alchemy/celo-mainnet/nft/v2/test/getNFTs?owner=${account}&withMetadata=true`;
 
   // const apiUrl = `https://api.center.dev/experimental/alchemy/ethereum-mainnet/nft/v2/key9456b2860674f97e2606af81/getNFTs?owner=vitalik.eth&withMetadata=true`;
 
@@ -55,7 +55,7 @@ async function fetchCeloNft(account) {
 
     return nftNewFormat;
   });
-  return nftList;
+  return Promise.all(nftList);
 }
 
 async function _fetchCeloNft(account) {
@@ -125,12 +125,12 @@ async function fetchAlchemyNfts(account) {
 
 export async function FetchNft(account) {
   const nftList = [];
-  const alchemyNfts = await fetchAlchemyNfts(account);
-  nftList.push(...alchemyNfts);
+  // const alchemyNfts = await fetchAlchemyNfts(account);
+  // nftList.push(...alchemyNfts);
 
-  const polygonNfts = await fetchPolygonNft(account);
-  nftList.push(...polygonNfts);
-  // console.log(alchemyNfts);
+  // const polygonNfts = await fetchPolygonNft(account);
+  // nftList.push(...polygonNfts);
+  // // console.log(alchemyNfts);
 
   const celoNfts = await fetchCeloNft(account);
   nftList.push(...celoNfts);

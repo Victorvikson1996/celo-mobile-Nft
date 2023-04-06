@@ -62,6 +62,12 @@ const NftScreen = () => {
 
   const connector = useWalletConnect();
 
+  const onErr = () => {
+    Alert.alert("Error", "You cancelled the connection request", [
+      { text: "OK", onPress: () => nav.goBack() },
+    ]);
+  };
+
   const connectWallet = async () => {
     setLoading(true);
     connector
@@ -98,12 +104,6 @@ const NftScreen = () => {
   // }
 
   // fetchNFTMetadata();
-
-  const onErr = () => {
-    Alert.alert("Error", "You cancelled the connection request", [
-      { text: "OK", onPress: () => nav.goBack() },
-    ]);
-  };
 
   const getNfts = async (acnt) => {
     try {
