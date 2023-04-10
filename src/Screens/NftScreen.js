@@ -9,6 +9,8 @@ import {
   Pressable,
   Image,
   TouchableOpacity,
+  SafeAreaView,
+  Button,
 } from "react-native";
 
 import React, { useState, useEffect } from "react";
@@ -131,12 +133,11 @@ const NftScreen = () => {
     );
   };
 
-  const _disconnectWallet = () => {
+  const _disconnectWallet = async () => {
     connector.killSession();
     setAccounts([]);
     setNfts([]);
     setLoading(false);
-    nav.goBack();
   };
 
   // if (loading) {
@@ -144,23 +145,28 @@ const NftScreen = () => {
   // }
 
   return (
-    <View style={styles.container}>
-      <TouchableOpacity>
-        <Text>{"My Gallery"}</Text>
+    <SafeAreaView style={styles.container}>
+      <TouchableOpacity style={{ flexDirection: "row" }}>
+        <Text>{"My Gallery"} </Text>
+        <Button title="Disconnect" onPress={_disconnectWalletAlert()} />
       </TouchableOpacity>
       <View style={styles.outer_wallet_container}>
         <View style={styles.wallet_container} level={"2"}>
           <Text style={styles.wallet_id}>💎 {addr}</Text>
         </View>
       </View>
-      <FlatList
-        data={nfts || []}
-        renderItem={renderGalleryItem}
-        keyExtractor={(item, idx) => idx.toString()}
-        numColumns={3}
-        style={{ paddingHorizontal: 10 }}
-      />
-    </View>
+      {loading ? (
+        <ActivityIndicator color="black" size={40} />
+      ) : (
+        <FlatList
+          data={nfts || []}
+          renderItem={renderGalleryItem}
+          keyExtractor={(item, idx) => idx.toString()}
+          numColumns={3}
+          style={{ paddingHorizontal: 10 }}
+        />
+      )}
+    </SafeAreaView>
   );
 };
 

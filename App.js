@@ -1,4 +1,4 @@
-import "./global";
+import "./shims";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, Platform } from "react-native";
 import { Navigation } from "./src/Navigation";
