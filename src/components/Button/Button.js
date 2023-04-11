@@ -9,7 +9,7 @@ import {
 
 import COLORS from "../../../utils/COLORS";
 
-const Button = ({ title, onPress = () => {}, color }) => {
+const Button = ({ title, onPress }) => {
   return (
     <TouchableOpacity
       onPress={onPress}
@@ -25,10 +25,7 @@ const Button = ({ title, onPress = () => {}, color }) => {
       }}
       testID="button"
     >
-      <Text
-        testID="text"
-        style={{ color: COLORS.white, fontWeight: "bold", fontSize: 18 }}
-      >
+      <Text style={{ color: COLORS.white, fontWeight: "bold", fontSize: 18 }}>
         {title}
       </Text>
     </TouchableOpacity>
