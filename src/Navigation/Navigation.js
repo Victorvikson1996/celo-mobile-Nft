@@ -2,7 +2,7 @@ import { View, Text } from "react-native";
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import { ConnectButtonScreen, NftScreen } from "../Screens";
+import { ConnectButtonScreen, NftScreen, OnBoardScreen } from "../Screens";
 
 const screenOptions = {
   headerShown: false,
@@ -14,6 +14,7 @@ const Navigation = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={screenOptions}>
+        <Stack.Screen name="onBoard" component={OnBoardScreen} />
         <Stack.Screen name="Button" component={ConnectButtonScreen} />
         <Stack.Screen name="NFT" component={NftScreen} />
       </Stack.Navigator>

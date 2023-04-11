@@ -1,9 +1,11 @@
 import "./shims";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, Platform } from "react-native";
+import { StyleSheet, Text, View, Platform, LogBox } from "react-native";
 import { Navigation } from "./src/Navigation";
 import { WalletConnectProvider } from "@walletconnect/react-native-dapp/dist/providers";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+
+LogBox.ignoreAllLogs();
 
 const SCHEME_FROM_APP_JSON = "connectDapp";
 

@@ -133,22 +133,10 @@ const NftScreen = () => {
     );
   };
 
-  const _disconnectWallet = async () => {
-    connector.killSession();
-    setAccounts([]);
-    setNfts([]);
-    setLoading(false);
-  };
-
-  // if (loading) {
-  //   return <ActivityIndicator color={"#fff"} size="27" />;
-  // }
-
   return (
     <SafeAreaView style={styles.container}>
       <TouchableOpacity style={{ flexDirection: "row" }}>
         <Text>{"My Gallery"} </Text>
-        <Button title="Disconnect" onPress={_disconnectWalletAlert()} />
       </TouchableOpacity>
       <View style={styles.outer_wallet_container}>
         <View style={styles.wallet_container} level={"2"}>
@@ -164,6 +152,12 @@ const NftScreen = () => {
           keyExtractor={(item, idx) => idx.toString()}
           numColumns={3}
           style={{ paddingHorizontal: 10 }}
+          ListFooterComponent={
+            <Button
+              title="Disconnect"
+              onPress={() => connector.killSession() && nav.goBack()}
+            />
+          }
         />
       )}
     </SafeAreaView>
