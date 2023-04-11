@@ -29,12 +29,6 @@ const shortenAddress = (address) => {
 };
 
 const GalleryItem = ({ item }) => {
-  const nav = useNavigation();
-  const goToUploadNft = () => {
-    nav.navigate("NFT_UPLOAD", {
-      nft: item.imageUrl,
-    });
-  };
   return (
     <Pressable style={styles.galleryItem_container}>
       <View style={styles.img_container}>
@@ -91,21 +85,6 @@ const NftScreen = () => {
   useEffect(() => {
     connectWallet();
   }, []);
-
-  // async function fetchNFTMetadata() {
-  //   try {
-  //     const response = await fetch(
-  //       "https://api.center.dev/experimental/alchemy/ethereum-mainnet/nft/v2/key9456b2860674f97e2606af81/getNFTs?owner=vitalik.eth&withMetadata=true"
-  //     );
-  //     const data = await response.json();
-  //     console.log(data);
-  //     // process the fetched data here
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // }
-
-  // fetchNFTMetadata();
 
   const getNfts = async (acnt) => {
     try {
